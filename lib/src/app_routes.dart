@@ -1,5 +1,11 @@
 import 'package:flutter/material.dart';
 
+import 'views/auth/auth_home.dart';
+import 'views/auth/splash.dart';
+import 'views/user/edit_profile.dart';
+import 'views/user/user_info.dart';
+import 'views/user/user_profile.dart';
+
 class AppRoutes {
   static const home = "/";
   static const splash = "splash";
@@ -16,18 +22,18 @@ class AppRoutes {
       builder: (_) {
         switch (settings.name) {
           case home:
-            return AuthHomePage();
+            return const AuthHomePage();
           case userInfo:
-            return UserInfoPage();
+            return const UserInfoPage();
           case editProfile:
             return EditProfile(
               user: settings.arguments,
             );
           case profile:
-            return UserProfile();
+            return const UserProfile();
           case splash:
           default:
-            return Splash();
+            return const Splash();
         }
       });
   }

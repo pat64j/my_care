@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
-class AuthHomePage extends StatelessWidget {
-  const AuthHomePage({Key? key}) : super(key: key);
+class Splash extends StatelessWidget {
+  const Splash({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
