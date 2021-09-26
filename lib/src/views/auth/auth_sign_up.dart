@@ -88,10 +88,13 @@ class SignUpView extends HookConsumerWidget {
                       height: 15,
                     ),
                     TextField(
-                      onChanged: (String val) {},
+                      onChanged: (String val) {
+                        validationService.passwordDelta(val);
+                      },
                       decoration: InputDecoration(
                         labelText: AppLocalizations.of(context)!.password,
                         labelStyle: const TextStyle(fontSize: 15.0, fontWeight: FontWeight.bold),
+                        errorText: validationService.password.error,
                         border: OutlineInputBorder(
                           borderRadius: BorderRadius.circular(10),
                         ),
@@ -106,10 +109,13 @@ class SignUpView extends HookConsumerWidget {
                       height: 15,
                     ),
                     TextField(
-                      onChanged: (String val) {},
+                      onChanged: (String val) {
+                        validationService.vPasswordDelta(val);
+                      },
                       decoration: InputDecoration(
                         labelText: AppLocalizations.of(context)!.verifyPassword,
                         labelStyle: const TextStyle(fontSize: 15.0, fontWeight: FontWeight.bold),
+                        errorText: validationService.vPassword.error,
                         border: OutlineInputBorder(
                           borderRadius: BorderRadius.circular(10),
                         ),

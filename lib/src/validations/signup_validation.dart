@@ -25,7 +25,7 @@ class SignUpValidation extends ChangeNotifier{
     if(value.length >= 3){
       _fullName = ValidationItem(value, null);
     } else{
-      _fullName = ValidationItem(null, 'Full name must 3 characters or more.');
+      _fullName = ValidationItem(null, 'Full name must be 3 characters or more.');
     }
     notifyListeners();
   }
