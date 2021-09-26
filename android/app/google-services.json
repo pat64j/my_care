@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "893678766614",
+    "project_id": "meetup-bk",
+    "storage_bucket": "meetup-bk.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:893678766614:android:a75b3a57e2f1a95b520337",
+        "android_client_info": {
+          "package_name": "com.dalionroyal.my_care"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "893678766614-daph1c9goj5oqh3dmh3si4jua7t9ne68.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBJ4dl5U5dLF-gnUZiG-LXvVo9zUMNQ3rM"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "893678766614-daph1c9goj5oqh3dmh3si4jua7t9ne68.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

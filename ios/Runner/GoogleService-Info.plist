@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>CLIENT_ID</key>
+	<string>893678766614-tcibig888ka54mf9qid5km9mf100qij1.apps.googleusercontent.com</string>
+	<key>REVERSED_CLIENT_ID</key>
+	<string>com.googleusercontent.apps.893678766614-tcibig888ka54mf9qid5km9mf100qij1</string>
+	<key>API_KEY</key>
+	<string>AIzaSyBbzRWCojmonnBZuK9PUG7VnrAIp5pOisc</string>
+	<key>GCM_SENDER_ID</key>
+	<string>893678766614</string>
+	<key>PLIST_VERSION</key>
+	<string>1</string>
+	<key>BUNDLE_ID</key>
+	<string>com.dalionroyal.my-care</string>
+	<key>PROJECT_ID</key>
+	<string>meetup-bk</string>
+	<key>STORAGE_BUCKET</key>
+	<string>meetup-bk.appspot.com</string>
+	<key>IS_ADS_ENABLED</key>
+	<false></false>
+	<key>IS_ANALYTICS_ENABLED</key>
+	<false></false>
+	<key>IS_APPINVITE_ENABLED</key>
+	<true></true>
+	<key>IS_GCM_ENABLED</key>
+	<true></true>
+	<key>IS_SIGNIN_ENABLED</key>
+	<true></true>
+	<key>GOOGLE_APP_ID</key>
+	<string>1:893678766614:ios:9719f312a1030780520337</string>
+</dict>
+</plist>
