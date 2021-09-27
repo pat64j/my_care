@@ -1,26 +1,21 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
-import 'package:my_care/src/validations/signup_validation.dart';
+import 'package:my_care/src/providers/providers.dart';
+import 'package:my_care/src/repos/user_repo.dart';
 import 'package:my_care/src/values/all_resources.dart';
 
-import 'auth_login.dart';
-import 'auth_reset_password.dart';
-
-final signUpValidationProvider = ChangeNotifierProvider<SignUpValidation>(
-        (ref) => SignUpValidation()
-);
+import '../../app_routes.dart';
 
 /// Displays the login view
 class SignUpView extends HookConsumerWidget {
   const SignUpView({Key? key}) : super(key: key);
 
-  static const routeName = '/sign_up';
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-
     final validationService = ref.watch(signUpValidationProvider);
+    final userRepo = ref.watch(userRepoProvider);
 
     return Scaffold(
       body: SafeArea(
@@ -134,7 +129,7 @@ class SignUpView extends HookConsumerWidget {
                       children: [
                         TextButton(
                           onPressed: () {
-                            Navigator.restorablePushNamed(context, LoginView.routeName);
+                            Navigator.restorablePushNamed(context, AppRoutes.login);
                           },
                           child: Text(AppLocalizations.of(context)!.signIn,
                               style: const TextStyle(color: Colors.blue, decoration: TextDecoration.underline)),
@@ -142,7 +137,7 @@ class SignUpView extends HookConsumerWidget {
                         const Text('|'),
                         TextButton(
                           onPressed: () {
-                            Navigator.restorablePushNamed(context, ResetPasswordView.routeName);
+                            Navigator.restorablePushNamed(context, AppRoutes.forgotPassword);
                           },
                           child: Text(AppLocalizations.of(context)!.forgotPassword,
                               style: const TextStyle(color: Colors.blue, decoration: TextDecoration.underline)),
@@ -152,12 +147,39 @@ class SignUpView extends HookConsumerWidget {
                     SizedBox(
                       width: double.infinity,
                       child: ElevatedButton(
-                        onPressed: () {},
+                        onPressed: validationService.isValid
+                            ? ()async {
+                                bool isSignedIn = await userRepo.signup(
+                                    validationService.email.value!,
+                                    validationService.password.value!,
+                                    validationService.fullName.value!
+                                );
+                                if (isSignedIn){
+                                  Navigator.restorablePushNamedAndRemoveUntil(context, AppRoutes.homeDash, (route) => false);
+                                }
+                              }
+                            : null,
                         child: Padding(
                           padding: const EdgeInsets.all(10.0),
-                          child: Text(
-                            AppLocalizations.of(context)!.signUp.toUpperCase(),
-                            style: const TextStyle(fontSize: 20),
+                          child: Row(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            children: [
+                              userRepo.status == Status.authenticating ? const Padding(
+                                padding: EdgeInsets.only(right: 5),
+                                child: SizedBox(
+                                  width: 20,
+                                  height: 20,
+                                  child: CircularProgressIndicator(
+                                    color: Colors.white,
+                                    strokeWidth: 2,
+                                  ),
+                                ),
+                              ):
+                              Text(
+                                AppLocalizations.of(context)!.signUp.toUpperCase(),
+                                style: const TextStyle(fontSize: 20),
+                              ),
+                            ],
                           ),
                         ),
                         style: ElevatedButton.styleFrom(

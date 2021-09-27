@@ -1,8 +1,8 @@
 import 'user_fields.dart';
 
 class UserModel {
-  String id;
-  String name;
+  String? id;
+  String? name;
   String email;
   DateTime? lastLoggedIn;
   DateTime? registrationDate;
@@ -12,8 +12,8 @@ class UserModel {
 
   UserModel(
       {required this.id,
-        required this.name,
         required this.email,
+        this.name,
         this.lastLoggedIn,
         this.registrationDate,
         this.photoUrl,

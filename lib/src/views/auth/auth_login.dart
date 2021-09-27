@@ -2,14 +2,11 @@ import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:my_care/src/values/all_resources.dart';
 
-import 'auth_reset_password.dart';
-import 'auth_sign_up.dart';
+import '../../app_routes.dart';
 
 /// Displays the login view
 class LoginView extends StatelessWidget {
   const LoginView({Key? key}) : super(key: key);
-
-  static const routeName = '/';
 
   @override
   Widget build(BuildContext context) {
@@ -68,7 +65,7 @@ class LoginView extends StatelessWidget {
                         children: [
                           TextButton(
                             onPressed: (){
-                              Navigator.restorablePushNamed(context, SignUpView.routeName);
+                              Navigator.restorablePushNamed(context, AppRoutes.signup);
                             },
                             child: Text(
                               AppLocalizations.of(context)!.createAccount,
@@ -77,7 +74,7 @@ class LoginView extends StatelessWidget {
                           const Text('|'),
                           TextButton(
                             onPressed: (){
-                              Navigator.restorablePushNamed(context, ResetPasswordView.routeName);
+                              Navigator.restorablePushNamed(context, AppRoutes.forgotPassword);
                             },
                             child: Text(
                                 AppLocalizations.of(context)!.forgotPassword,
