@@ -46,9 +46,10 @@ class DashboardPage extends HookConsumerWidget {
                       children: [
                         CircleAvatar(
                           child: IconButton(
-                              onPressed: () async{
-                                await userRepo.signOut();
-                                Navigator.restorablePushNamedAndRemoveUntil(context, AppRoutes.login, (route) => false);
+                              onPressed: (){
+                                userRepo.signOut().then((_){
+                                  Navigator.restorablePushNamedAndRemoveUntil(context, AppRoutes.login, (route) => false);
+                                });
                               },
                               icon: const Icon(Icons.logout,color: Colors.white,)
                           ),

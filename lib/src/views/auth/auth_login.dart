@@ -97,14 +97,15 @@ class LoginView extends HookConsumerWidget {
                       SizedBox(
                         width: double.infinity,
                         child: ElevatedButton(
-                          onPressed: !loginService.canLogin || userRepo.status == Status.authenticating ? null:() async {
-                            bool isSignedIn = await userRepo.signIn(
-                                loginService.email.value!,
-                                loginService.password.value!
-                            );
-                            if(isSignedIn){
-                              Navigator.restorablePushNamedAndRemoveUntil(context, AppRoutes.homeDash, (route) => false);
-                            }
+                          onPressed: !loginService.canLogin || userRepo.status == Status.authenticating ? null:() {
+                            userRepo.signIn(
+                              loginService.email.value!,
+                              loginService.password.value!
+                            ).then((isSignedIn) {
+                              if(isSignedIn){
+                                Navigator.restorablePushNamedAndRemoveUntil(context, AppRoutes.homeDash, (route) => false);
+                              }
+                            });
                           },
                           child: Padding(
                             padding: const EdgeInsets.all(10.0),
