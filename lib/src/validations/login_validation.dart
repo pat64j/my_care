@@ -8,9 +8,8 @@ class LoginValidation extends ChangeNotifier{
   ValidationItem _email = ValidationItem(null, null);
   ValidationItem _password = ValidationItem(null, null);
 
-  ValidationItem get email => _password;
+  ValidationItem get email => _email;
   ValidationItem get password => _password;
-
   bool get canLogin{
     if(_email.value != null && _password.value != null){
       return true;
@@ -18,20 +17,23 @@ class LoginValidation extends ChangeNotifier{
     return false;
   }
 
-  void emailDelta(String email){
-    if(email.isValidEmail()){
-      _email = ValidationItem(email, null);
+  /// Setters
+  void emailDelta(String value){
+    if(value.isValidEmail()){
+      _email = ValidationItem(value, null);
     } else{
       _email = ValidationItem(null, 'Please provide a valid email.');
     }
+    notifyListeners();
   }
 
-  void passwordDelta(String password){
-    if(password.length >= 6){
-      _password = ValidationItem(password, null);
+  void passwordDelta(String value){
+    if(value.length >= 6){
+      _password = ValidationItem(value, null);
     } else{
-      _email = ValidationItem(null, 'Password must be more than 5 characters.');
+      _password = ValidationItem(null, 'Password must be more than 5 characters.');
     }
+    notifyListeners();
   }
 
 

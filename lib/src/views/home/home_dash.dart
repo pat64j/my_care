@@ -1,73 +1,108 @@
 import 'package:flutter/material.dart';
+import 'package:hooks_riverpod/hooks_riverpod.dart';
+import 'package:my_care/src/providers/providers.dart';
 
-class DashboardPage extends StatelessWidget {
+import '../../app_routes.dart';
+
+class DashboardPage extends HookConsumerWidget {
   const DashboardPage({Key? key}) : super(key: key);
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context, WidgetRef ref) {
+    final userRepo = ref.watch(userRepoProvider);
+
     return Scaffold(
       body: Stack(
-        children: [dashBg, content],
+        children: [
+          Column(
+            children: <Widget>[
+              Expanded(
+                child: Container(color: Colors.deepPurple),
+                flex: 2,
+              ),
+              Expanded(
+                child: Container(color: Colors.transparent),
+                flex: 5,
+              ),
+            ],
+          ),
+          SafeArea(
+            child: Column(
+              children: [
+                 ListTile(
+                    contentPadding: const EdgeInsets.only(left: 20, right: 20, top: 20),
+                    leading: const CircleAvatar(),
+                    title: const Text(
+                      'Dashboard',
+                      style: TextStyle(color: Colors.white),
+                    ),
+                    subtitle: const Text(
+                      '10 items',
+                      style: TextStyle(color: Colors.blue),
+                    ),
+                    trailing: !userRepo.isLoading ?
+                    Column(
+                      children: [
+                        CircleAvatar(
+                          child: IconButton(
+                              onPressed: () async{
+                                await userRepo.signOut();
+                                Navigator.restorablePushNamedAndRemoveUntil(context, AppRoutes.login, (route) => false);
+                              },
+                              icon: const Icon(Icons.logout,color: Colors.white,)
+                          ),
+                        ),
+                        const Text('Logout',
+                        style: TextStyle(
+                          fontSize: 12,
+                          color: Colors.white
+                        ),)
+                      ],
+                    ):
+                    const CircleAvatar(
+                      child: SizedBox(
+                        width: 15,
+                        height: 15,
+                        child: CircularProgressIndicator(
+                          color: Colors.white,
+                          strokeWidth: 2,
+                        )
+                      ),
+                    )
+
+
+
+                ),
+                Expanded(
+                  child: Container(
+                    padding: const EdgeInsets.only(left: 16, right: 16, bottom: 16),
+                    child: GridView.count(
+                      crossAxisSpacing: 16,
+                      mainAxisSpacing: 16,
+                      crossAxisCount: 2,
+                      childAspectRatio: .90,
+                      children: List.generate(6, (_) {
+                        return Card(
+                          elevation: 2,
+                          shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(8)),
+                          child: Center(
+                            child: Column(
+                              mainAxisSize: MainAxisSize.min,
+                              children: const [FlutterLogo(), Text('data')],
+                            ),
+                          ),
+                        );
+                      }),
+                    ),
+                  ),
+                ),
+              ],
+            ),
+          ),
+        ],
       ),
     );
   }
 
-  get dashBg => Column(
-        children: <Widget>[
-          Expanded(
-            child: Container(color: Colors.deepPurple),
-            flex: 2,
-          ),
-          Expanded(
-            child: Container(color: Colors.transparent),
-            flex: 5,
-          ),
-        ],
-      );
 
-  get content => SafeArea(
-        child: Column(
-          children: <Widget>[
-            header,
-            grid,
-          ],
-        ),
-      );
-
-  get header => const ListTile(
-        contentPadding: EdgeInsets.only(left: 20, right: 20, top: 20),
-        title: Text(
-          'Dashboard',
-          style: TextStyle(color: Colors.white),
-        ),
-        subtitle: Text(
-          '10 items',
-          style: TextStyle(color: Colors.blue),
-        ),
-        trailing: CircleAvatar(),
-      );
-
-  get grid => Expanded(
-        child: Container(
-          padding: const EdgeInsets.only(left: 16, right: 16, bottom: 16),
-          child: GridView.count(
-            crossAxisSpacing: 16,
-            mainAxisSpacing: 16,
-            crossAxisCount: 2,
-            childAspectRatio: .90,
-            children: List.generate(6, (_) {
-              return Card(
-                elevation: 2,
-                shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(8)),
-                child: Center(
-                  child: Column(
-                    mainAxisSize: MainAxisSize.min,
-                    children: const [FlutterLogo(), Text('data')],
-                  ),
-                ),
-              );
-            }),
-          ),
-        ),
-      );
 }

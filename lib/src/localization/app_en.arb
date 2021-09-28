@@ -10,5 +10,6 @@
   "password": "Password",
   "verifyPassword": "Verify Password",
   "createAccount": "Create Account",
-  "forgotPassword": "Forgot Password"
+  "forgotPassword": "Forgot Password",
+  "requestPassReset": "Request reset"
 }

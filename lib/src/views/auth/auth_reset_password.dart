@@ -6,8 +6,6 @@ import 'package:my_care/src/values/all_resources.dart';
 class ResetPasswordView extends StatelessWidget {
   const ResetPasswordView({Key? key}) : super(key: key);
 
-  static const routeName = '/reset_password';
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -42,24 +40,6 @@ class ResetPasswordView extends StatelessWidget {
                       const SizedBox(
                         height: 15,
                       ),
-                      TextField(
-                        onChanged: (String val) {},
-                        decoration: InputDecoration(
-                          labelText: AppLocalizations.of(context)!.password,
-                          labelStyle: const TextStyle(fontSize: 15.0, fontWeight: FontWeight.bold),
-                          border: OutlineInputBorder(
-                            borderRadius: BorderRadius.circular(10),
-                          ),
-                          focusedBorder: OutlineInputBorder(
-                            borderSide: BorderSide(color: Theme.of(context).primaryColor, width: 1.0),
-                            borderRadius: BorderRadius.circular(10),
-                          ),
-                        ),
-                        obscureText: true,
-                      ),
-                      const SizedBox(
-                        height: 15,
-                      ),
                       Row(
                         mainAxisAlignment: MainAxisAlignment.end,
                         children: [
@@ -85,7 +65,7 @@ class ResetPasswordView extends StatelessWidget {
                           child: Padding(
                             padding: const EdgeInsets.all(10.0),
                             child: Text(
-                              AppLocalizations.of(context)!.signIn.toUpperCase(),
+                              AppLocalizations.of(context)!.requestPassReset.toUpperCase(),
                               style: const TextStyle(
                                   fontSize: 20
                               ),

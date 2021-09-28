@@ -71,7 +71,10 @@ class UserRepository with ChangeNotifier{
 
 
   Future signOut() async {
-    _auth.signOut();
+    _loading = true;
+    notifyListeners();
+    await _auth.signOut();
+    _loading = false;
     _status = Status.unauthenticated;
     _fsUser = null;
     _userListener?.cancel();

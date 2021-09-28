@@ -20,10 +20,8 @@ class SignUpValidation extends ChangeNotifier{
   ValidationItem get vPassword => _vPassword;
   bool get isValid {
     if(_fullName.value != null && _email.value !=null && _password.value != null && _vPassword.value != null){
-      // notifyListeners();
       return true;
     }
-    // notifyListeners();
     return false;
 
   }

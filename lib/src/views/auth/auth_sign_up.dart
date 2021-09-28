@@ -164,7 +164,7 @@ class SignUpView extends HookConsumerWidget {
                           child: Row(
                             mainAxisAlignment: MainAxisAlignment.center,
                             children: [
-                              userRepo.status == Status.authenticating ? const Padding(
+                              if (userRepo.status == Status.authenticating) const Padding(
                                 padding: EdgeInsets.only(right: 5),
                                 child: SizedBox(
                                   width: 20,
@@ -174,7 +174,7 @@ class SignUpView extends HookConsumerWidget {
                                     strokeWidth: 2,
                                   ),
                                 ),
-                              ):
+                              ) else const SizedBox(height: 0, width: 0,),
                               Text(
                                 AppLocalizations.of(context)!.signUp.toUpperCase(),
                                 style: const TextStyle(fontSize: 20),
