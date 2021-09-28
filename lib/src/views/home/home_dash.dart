@@ -1,3 +1,4 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:my_care/src/providers/providers.dart';
@@ -81,18 +82,123 @@ class DashboardPage extends HookConsumerWidget {
                       mainAxisSpacing: 16,
                       crossAxisCount: 2,
                       childAspectRatio: .90,
-                      children: List.generate(6, (_) {
-                        return Card(
+                      children: [
+                        Card(
                           elevation: 2,
                           shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(8)),
                           child: Center(
                             child: Column(
                               mainAxisSize: MainAxisSize.min,
-                              children: const [FlutterLogo(), Text('data')],
+                              children: [
+                                Icon(
+                                  Icons.notifications_active,
+                                  size: 100,
+                                  color: Theme.of(context).primaryColor,
+                                ),
+                                const SizedBox(height: 20,),
+                                const Text(
+                                  'Notifications',
+                                  style: TextStyle(
+                                    fontSize: 20,
+                                  ),
+                                )
+                              ],
                             ),
                           ),
-                        );
-                      }),
+                        ),
+                        Card(
+                          elevation: 2,
+                          shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(8)),
+                          child: Center(
+                            child: Column(
+                              mainAxisSize: MainAxisSize.min,
+                              children: [
+                                Icon(
+                                  Icons.schedule,
+                                  size: 100,
+                                  color: Theme.of(context).primaryColor,
+                                ),
+                                const SizedBox(height: 20,),
+                                const Text(
+                                  'Schedule',
+                                  style: TextStyle(
+                                    fontSize: 20,
+                                  ),
+                                )
+                              ],
+                            ),
+                          ),
+                        ),
+                        Card(
+                          elevation: 2,
+                          shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(8)),
+                          child: Center(
+                            child: Column(
+                              mainAxisSize: MainAxisSize.min,
+                              children: [
+                                Icon(
+                                  Icons.payment,
+                                  size: 100,
+                                  color: Theme.of(context).primaryColor,
+                                ),
+                                const SizedBox(height: 20,),
+                                const Text(
+                                  'Payments',
+                                  style: TextStyle(
+                                    fontSize: 20,
+                                  ),
+                                )
+                              ],
+                            ),
+                          ),
+                        ),
+                        Card(
+                          elevation: 2,
+                          shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(8)),
+                          child: Center(
+                            child: Column(
+                              mainAxisSize: MainAxisSize.min,
+                              children: [
+                                Icon(
+                                  Icons.auto_graph,
+                                  size: 100,
+                                  color: Theme.of(context).primaryColor,
+                                ),
+                                const SizedBox(height: 20,),
+                                const Text(
+                                  'Report',
+                                  style: TextStyle(
+                                    fontSize: 20,
+                                  ),
+                                )
+                              ],
+                            ),
+                          ),
+                        ),
+                        Card(
+                          elevation: 2,
+                          shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(8)),
+                          child: Center(
+                            child: Column(
+                              mainAxisSize: MainAxisSize.min,
+                              children: [
+                                Icon(
+                                  Icons.account_circle_sharp,
+                                  size: 100,
+                                  color: Theme.of(context).primaryColor,
+                                ),
+                                const SizedBox(height: 20,),
+                                const Text(
+                                  'My Profile',
+                                  style: TextStyle(
+                                    fontSize: 20,
+                                  ),
+                                )
+                              ],
+                            ),
+                          ),
+                        ),
+                      ],
                     ),
                   ),
                 ),
