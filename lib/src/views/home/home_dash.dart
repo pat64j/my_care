@@ -38,7 +38,7 @@ class DashboardPage extends HookConsumerWidget {
                       style: TextStyle(color: Colors.white),
                     ),
                     subtitle: const Text(
-                      '10 items',
+                      'user name',
                       style: TextStyle(color: Colors.blue),
                     ),
                     trailing: !userRepo.isLoading ?
@@ -176,26 +176,31 @@ class DashboardPage extends HookConsumerWidget {
                             ),
                           ),
                         ),
-                        Card(
-                          elevation: 2,
-                          shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(8)),
-                          child: Center(
-                            child: Column(
-                              mainAxisSize: MainAxisSize.min,
-                              children: [
-                                Icon(
-                                  Icons.account_circle_sharp,
-                                  size: 100,
-                                  color: Theme.of(context).primaryColor,
-                                ),
-                                const SizedBox(height: 20,),
-                                const Text(
-                                  'My Profile',
-                                  style: TextStyle(
-                                    fontSize: 20,
+                        GestureDetector(
+                          onTap: (){
+                            Navigator.restorablePushNamed(context, AppRoutes.profile);
+                          },
+                          child: Card(
+                            elevation: 2,
+                            shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(8)),
+                            child: Center(
+                              child: Column(
+                                mainAxisSize: MainAxisSize.min,
+                                children: [
+                                  Icon(
+                                    Icons.account_circle_sharp,
+                                    size: 100,
+                                    color: Theme.of(context).primaryColor,
                                   ),
-                                )
-                              ],
+                                  const SizedBox(height: 20,),
+                                  const Text(
+                                    'My Profile',
+                                    style: TextStyle(
+                                      fontSize: 20,
+                                    ),
+                                  )
+                                ],
+                              ),
                             ),
                           ),
                         ),

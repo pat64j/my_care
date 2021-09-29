@@ -11,5 +11,22 @@
   "verifyPassword": "Verify Password",
   "createAccount": "Create Account",
   "forgotPassword": "Forgot Password",
-  "requestPassReset": "Request reset"
+  "requestPassReset": "Request reset",
+  "dateOfBirth": "Date of Birth",
+  "phone": "Phone number",
+  "residentialAddress": "Residential Address",
+  "address": "Address",
+  "gender": "Gender",
+  "male": "Male",
+  "female": "Female",
+  "other": "Other",
+  "landMark": "Residential Landmark",
+  "maritalStatus": "Marital Status",
+  "single": "Single",
+  "married": "Married",
+  "divorced": "Divorced",
+  "separated": "Separated",
+  "commonLaw": "Common Law",
+  "primaryLanguage": "Primary Language",
+  "save": "Save"
 }
